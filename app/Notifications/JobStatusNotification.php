@@ -2,26 +2,23 @@
 
 namespace App\Notifications;
 
-use App\JobRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class JobAssigned extends Notification
+class JobStatusNotification extends Notification
 {
     use Queueable;
-
-    public $job_reference;
 
     /**
      * Create a new notification instance.
      *
-     * @param JobRequest $job_request
+     * @return void
      */
-    public function __construct($job_reference)
+    public function __construct()
     {
-        $this->job_reference = $job_reference;
+        //
     }
 
     /**
@@ -41,13 +38,13 @@ class JobAssigned extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    /*public function toMail($notifiable)
     {
         return (new MailMessage)
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
-    }
+    }*/
 
     /**
      * Get the array representation of the notification.
@@ -58,7 +55,7 @@ class JobAssigned extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data'=> 'Job request assigned to you. Reference number: ' . $this->job_reference
+            'data' => ''
         ];
     }
 }

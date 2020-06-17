@@ -41,4 +41,12 @@ abstract class TestCase extends BaseTestCase
         $user->roles()->attach($role);
         $this->actingAs($user);
     }
+    public function authenticateTutor()
+    {
+        $user = factory(User::class)->create();
+        $this->createRoles();
+        $role = Role::where('name', 'Junior')->first();
+        $user->roles()->attach($role);
+        $this->actingAs($user);
+    }
 }

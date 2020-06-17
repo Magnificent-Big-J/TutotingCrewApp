@@ -12,8 +12,6 @@ class JobController extends Controller
     public function store(JobRequestData $request)
     {
         $request->saveData();
-
-
     }
     public function destroy(JobRequest $job)
     {
@@ -26,6 +24,10 @@ class JobController extends Controller
         $job->assignATutor($user);
 
         session()->flash('success', 'Mentor is successfully assigned');
+    }
+    public function changeStatus(Request $request)
+    {
+        session()->flash('success', 'Request');
     }
 
 }
