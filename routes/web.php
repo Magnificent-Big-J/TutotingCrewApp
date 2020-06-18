@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes(['register'=> false]);
 Route::redirect('/', '/home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware'=> 'auth'], function () {
+    Route::post('timesheet/start/{jobRequest}', 'TimeSheetController@start_request_session')->name('timesheet.start');
+    Route::post('timesheet/stop/{timeSheet}', 'TimeSheetController@stop_request_session')->name('timesheet.stop');
+    Route::delete('timesheet/delete/{timeSheet}', 'TimeSheetController@destroy')->name('timesheet.delete');
+});
