@@ -1,6 +1,9 @@
 <?php
 
+use App\Role;
+use App\User;
 use Illuminate\Database\Seeder;
+use Faker\Factory;
 
 class RoleTableSeeder extends Seeder
 {
@@ -22,5 +25,16 @@ class RoleTableSeeder extends Seeder
         foreach ($roles as $role) {
             Role::create($role);
         }
+
+        $faker = Factory::create();
+        $user = User::create([
+            'name' => 'Joel Mnisi',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('password'),
+            'phone' => $faker->phoneNumber,
+            'location' => $faker->address
+        ]);
+        $role = Role::where('name', 'Admin')->first();
+        $user->roles()->attach($role);
     }
 }
