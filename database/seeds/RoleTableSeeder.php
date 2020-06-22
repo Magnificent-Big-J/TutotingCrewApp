@@ -36,5 +36,8 @@ class RoleTableSeeder extends Seeder
         ]);
         $role = Role::where('name', 'Admin')->first();
         $user->roles()->attach($role);
+        \factory(\App\Student::class, 10)->create();
+
+
     }
 }
