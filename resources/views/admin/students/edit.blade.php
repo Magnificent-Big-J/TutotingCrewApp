@@ -34,10 +34,10 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Student Full Name</label>
                             <div class="col-sm-10 ">
-                                <input type="text" class="form-control" id="name" value="{{$student->name}}">
+                                <input type="text" name="name" class="form-control" id="name" value="{{$student->name}}">
                             </div>
                             @error('name')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Student Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" value="{{$student->email}}">
+                                <input type="email" name="email" class="form-control" id="email" value="{{$student->email}}">
                             </div>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -57,10 +57,10 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-2 col-form-label">Student Phone Number</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="phone" value="{{$student->phone}}">
+                                <input name="phone" type="text" class="form-control" id="phone" value="{{$student->phone}}">
                             </div>
                             @error('phone')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
@@ -71,7 +71,7 @@
                                 <textarea class="form-control" name="location" rows="3"> {{$student->location}}</textarea>
                             </div>
                             @error('location')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror

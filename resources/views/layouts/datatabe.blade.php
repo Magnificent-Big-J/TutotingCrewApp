@@ -70,9 +70,15 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+@if (Session::has('success'))
+<script>
+    $(document).ready(function () {
+        Swal.fire('{{Session::get("success")}}')
+    })
+</script>
+@endif
 @yield('scripts')
 
 </body>

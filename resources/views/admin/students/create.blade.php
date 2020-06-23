@@ -34,10 +34,10 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Student Full Name</label>
                             <div class="col-sm-10 ">
-                                <input type="text" class="form-control" id="name" placeholder="Student Full Name">
+                                <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Student Full Name">
                             </div>
                             @error('name')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
@@ -46,10 +46,10 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Student Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="Student Email">
+                                <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="email" placeholder="Student Email">
                             </div>
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
@@ -57,10 +57,10 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-2 col-form-label">Student Phone Number</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="phone" placeholder="Student Phone Number">
+                                <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" id="phone" placeholder="Student Phone Number">
                             </div>
                             @error('phone')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror
@@ -68,10 +68,10 @@
                         <div class="form-group row">
                             <label for="location" class="col-sm-2 col-form-label">Student Location</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="location" rows="3" placeholder="Student Location" ></textarea>
+                                <textarea class="form-control" name="location" rows="3" placeholder="Student Location">{{ old('email') }}</textarea>
                             </div>
                             @error('location')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </span>
                             @enderror

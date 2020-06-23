@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\StudentRequestUpdate;
 use App\Student;
 use Illuminate\Http\Request;
 use DataTables;
@@ -35,9 +36,10 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
-        $student = $request->saveStudent();
-        return response()->json(['student'=> $student,
-            'message' => 'Student Successfully Created.']);
+        $request->saveStudent();
+        session()->flash('success','Student Successfully Created.');
+
+        return redirect()->route('student.view');
     }
 
     public function edit(Student $student)
@@ -51,14 +53,12 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentRequest $request, Student $student)
+    public function update(StudentRequestUpdate $request, Student $student)
     {
         $request->updateStudent($student);
 
-        return response()->json([
-            'student' => $student,
-            'message' => 'Successfully Updated.'
-        ], 200);
+        session()->flash('success','Successfully Updated.');
+        return redirect()->route('student.view');
     }
 
     /**
@@ -83,7 +83,6 @@ class StudentController extends Controller
                     $url = route('student.edit', $data->id);
                     $button = '<a href="'.$url.'" class="edit btn btn-primary btn-sm">Edit</a>';
 
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
                     return $button;
                 })
                 ->rawColumns(['actions'])

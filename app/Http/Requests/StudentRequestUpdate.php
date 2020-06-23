@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Student;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentRequest extends FormRequest
+class StudentRequestUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +25,14 @@ class StudentRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:students',
+            'email' => 'required|string|email|max:255|unique:students,email,' .$this->student->id,
             'phone' => 'required|string|max:255',
             'location' => 'required|string|max:255',
         ];
-    }
 
-    public function saveStudent()
+    }
+    public function updateStudent($student)
     {
-        return Student::create($this->all());
+        $student->update($this->all());
     }
-
 }
